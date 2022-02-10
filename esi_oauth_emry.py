@@ -7,6 +7,8 @@ import secrets
 from random import randbytes
 from shared_flow import send_sso_request
 from shared_flow import handle_sso_token_response
+import json
+import requests
 
 
 client_id = "9916e227ce8e45faa1091e7331d06c3f"
@@ -35,11 +37,4 @@ res = send_sso_request(form_values)
 data = handle_sso_token_response(res)
 
 
-# f"grant_type=authorization_code&code={auth_code}&client_id={client_id}&code_verifier={code_verifier}"
-# if send_req.status_code == 200:
-#     data = send_req.json()
-#    access_token = data["access_token"]
 
-# print(send_req)
-
-print(data)

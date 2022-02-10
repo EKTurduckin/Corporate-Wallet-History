@@ -23,10 +23,10 @@ def handle_sso_token_response(sso_response):
     else:
         data = sso_response.json()
         access_token = data["access_token"]
-        # jwt = validate_eve_jwt(access_token)
-        # character_id = jwt["sub"].split(":")[2]
-        # character_name = jwt["name"]
-        # ledger_path = f'/corporations/{corporation_id}/wallets/{division}/journal/'
-        # corp_wallet_path = 
-        # return jwt
-        return data
+        jwt = validate_eve_jwt(access_token)
+        character_id = jwt["sub"].split(":")[2]
+        character_name = jwt["name"]
+        ledgerpacked = requests.get(f'https://esi.evetech.net/corporations/characters/{character_id}/mining/')
+        ledger = json.load(ledgerpacked)
+        for i in ledger:
+            print(i)
